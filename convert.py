@@ -71,8 +71,11 @@ img_undist_cmd = (colmap_command + " image_undistorter \
     --image_path " + args.source_path + "/input \
     --input_path " + args.source_path + "/distorted/sparse/0 \
     --output_path " + args.source_path + "\
-    --output_type COLMAP" + "\
-        --min_scale 0.8" # Update: for fisheye undist
+    --output_type COLMAP"
+        # + "\
+        # --min_scale 1.0" # Update: for fisheye undist
+        # +"\
+        # --roi_max_y 0.8" # Update: for aspect ratio and remove drone?
     )
 exit_code = os.system(img_undist_cmd)
 if exit_code != 0:
